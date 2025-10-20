@@ -1,0 +1,47 @@
+name: Habit Tracker Automation
+
+on:
+  schedule:
+    # Morning script at 06:00 UTC (adjust if you’re in UTC+3 → that’s 09:00 local)
+    - cron: '0 6 * * *'
+    # Evening script at 20:59 UTC (~23:59 Israel time)
+    - cron: '59 20 * * *'
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  run-habit-scripts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create credentials and token files
+        run: |
+          mkdir -p $HOME/habit-secrets
+          echo "$GOOGLE_CREDENTIALS_JSON" | base64 --decode > ./credentials.json
+          echo "$GOOGLE_TOKEN_JSON" | base64 --decode > ./token.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run morning or evening script
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
+          PRIVATE_CALENDAR_ID: ${{ secrets.PRIVATE_CALENDAR_ID }}
+          STUDY_CALENDAR_ID: ${{ secrets.STUDY_CALENDAR_ID }}
+        run: |
+          hour=$(date -u +%H)
+          if [ "$hour" -eq "6" ]; then
+            echo "☀️ Running morning.js"
+            node morning.js
+          else
+            echo "🌙 Running evening.js"
+            node evening.js
+          fi

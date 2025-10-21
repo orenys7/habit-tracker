@@ -21,12 +21,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Create credentials and token files
-        run: |
-          mkdir -p $HOME/habit-secrets
-          echo "$GOOGLE_CREDENTIALS_JSON" | base64 --decode > ./credentials.json
-          echo "$GOOGLE_TOKEN_JSON" | base64 --decode > ./token.json
-
       - name: Install dependencies
         run: npm install
 
@@ -36,6 +30,17 @@ jobs:
           NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
           PRIVATE_CALENDAR_ID: ${{ secrets.PRIVATE_CALENDAR_ID }}
           STUDY_CALENDAR_ID: ${{ secrets.STUDY_CALENDAR_ID }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+          GOOGLE_TOKEN_JSON: ${{ secrets.GOOGLE_TOKEN_JSON }}
+          MEDITATION_PAGE_ID: ${{ secrets.MEDITATION_PAGE_ID }}
+          READING_BOOKS_PAGE_ID: ${{ secrets.READING_BOOKS_PAGE_ID }}
+          FOOTBALL_PAGE_ID: ${{ secrets.FOOTBALL_PAGE_ID }}
+          GYM_PAGE_ID: ${{ secrets.GYM_PAGE_ID }}
+          ENGLISH_VOCABULARY_PAGE_ID: ${{ secrets.ENGLISH_VOCABULARY_PAGE_ID }}
+          ENGLISH_CONVERSATION_PAGE_ID: ${{ secrets.ENGLISH_CONVERSATION_PAGE_ID }}
+          SELF_DEVELOPMENT_PAGE_ID: ${{ secrets.SELF_DEVELOPMENT_PAGE_ID }}
+          CODING_PAGE_ID: ${{ secrets.CODING_PAGE_ID }}
+          
         run: |
           hour=$(date -u +%H)
           if [ "$hour" -eq "6" ]; then

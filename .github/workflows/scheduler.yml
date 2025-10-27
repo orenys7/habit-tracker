@@ -2,8 +2,8 @@ name: Habit Tracker Automation
 
 on:
   schedule:
-    # Morning script at 06:00 UTC (adjust if you’re in UTC+3 → that’s 09:00 local)
-    - cron: '0 6 * * *'
+    # Morning script at 06:00 UTC (adjust if you’re in UTC+3 → that’s 06:00 local)
+    - cron: '0 3 * * *'
     # Evening script at 20:59 UTC (~23:59 Israel time)
     - cron: '59 20 * * *'
   workflow_dispatch:  # allow manual trigger

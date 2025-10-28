@@ -53,7 +53,7 @@ jobs:
           
         run: |
           hour=$(date -u +%H)
-          if [ "$hour" -eq "6" ]; then
+          if [ "$hour" -eq "3" ]; then
             echo "☀️ Running morning.js"
             node morning.js
           else

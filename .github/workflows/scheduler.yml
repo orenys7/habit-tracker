@@ -2,10 +2,10 @@ name: Habit Tracker Automation
 
 on:
   schedule:
-    # Morning script at 06:00 UTC (adjust if you’re in UTC+3 → that’s 09:00 local)
-    - cron: '0 6 * * *'
-    # Evening script at 20:59 UTC (~23:59 Israel time)
-    - cron: '59 20 * * *'
+    # Morning script at 03:00 UTC (adjust if you’re in UTC+3 → that’s 06:00 local)
+    - cron: '0 3 * * *'
+    # Evening script at 21:30 UTC (~23:30 Israel time)
+    - cron: '30 21 * * *'
   workflow_dispatch:  # allow manual trigger
 
 jobs:
@@ -53,7 +53,7 @@ jobs:
           
         run: |
           hour=$(date -u +%H)
-          if [ "$hour" -eq "6" ]; then
+          if [ "$hour" -eq "3" ]; then
             echo "☀️ Running morning.js"
             node morning.js
           else

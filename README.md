@@ -1,4 +1,4 @@
-# 🧘 habit-tracker
+# 🧘 Habit Tracker
 
 A command-line tool built with Node.js to help you track your daily habits and maintain consistency.
 

@@ -3,8 +3,7 @@ export const MY_HABITS = [
   'Reading Book',
   'Football',
   'Gym',
-  'English Vocabulary',
-  'English Conversation',
+  'Practice English',
   'Self Development',
   'Coding',
 ];
@@ -30,15 +29,10 @@ export const HABITS_OBJECT = {
     duration: 60,
     notionPage: process.env.GYM_PAGE_ID
   },
-  'English Vocabulary': {
+  'Practice English': {
     calendarId: process.env.STUDY_CALENDAR_ID,
     duration: 30,
-    notionPage: process.env.ENGLISH_VOCABULARY_PAGE_ID
-  },
-  'English Conversation': {
-    calendarId: process.env.STUDY_CALENDAR_ID,
-    duration: 30,
-    notionPage: process.env.ENGLISH_CONVERSATION_PAGE_ID
+    notionPage: process.env.PRACTICE_ENGLISH_PAGE_ID
   },
   'Self Development': {
     calendarId: process.env.STUDY_CALENDAR_ID,

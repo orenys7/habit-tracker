@@ -4,8 +4,8 @@ on:
   schedule:
     # Morning script at 06:00 UTC (adjust if you’re in UTC+3 → that’s 09:00 local)
     - cron: '0 6 * * *'
-    # Evening script at 20:59 UTC (~23:59 Israel time)
-    - cron: '59 20 * * *'
+    # Evening script at 21:30 UTC (~23:30 Israel time)
+    - cron: '30 21 * * *'
   workflow_dispatch:  # allow manual trigger
 
 jobs:
